@@ -29,4 +29,19 @@ class Project < ApplicationRecord
     }])
   end
 
+  def self.update_project(project_id, t)
+    Project.find_by_sql(["
+      UPDATE projects AS p
+      SET title = ?, power = ?, updated_at = ?
+      WHERE p.id = ?
+    ", t[:title], t[:power], DateTime.now, project_id])
+  end
+
+  def self.delete_project(project_id)
+    Project.find_by_sql(["
+      DELETE FROM projects AS p
+      WHERE p.id = ?
+    ", project_id])
+  end
+
 end
