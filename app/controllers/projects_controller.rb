@@ -9,12 +9,15 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    @project = Project.new
   end
 
   def edit
   end
 
   def create
+    @project = Project.create_project(project_params, current_user.id)
+    redirect_to projects_path
   end
 
   def destroy
@@ -23,8 +26,10 @@ class ProjectsController < ApplicationController
   private
 
   def set_project
+    @project = Project.single_project(current_user.id, params[:id])
   end
 
   def project_params
+    params.require(:project).permit(:title)
   end
 end
