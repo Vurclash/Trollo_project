@@ -1,2 +1,9 @@
-<h1>Sidekicks#index</h1>
-<p>Find me in app/views/sidekicks/index.html.erb</p>
+<h1>Sidekick</h1>
+
+<% @sidekicks.each do |sidekick| %>
+  <div>
+    <h3>
+      <%= link_to sidekick.name, sidekick_path(sidekick) %>
+    </h3>
+  </div>
+<% end %>

@@ -1,2 +1,6 @@
-<h1>Sidekicks#show</h1>
-<p>Find me in app/views/sidekicks/show.html.erb</p>
+<h1><%= @sidekick.name %></h1>
+<h3><%= @sidekick.power %></h3>
+<h3><%= @sidekick.hero %></h3>
+
+<%= link_to "Edit Project", edit_project_path(@project), class: "ui orange button" %>
+<%= link_to "Delete Project", project_path(@project), method: :delete, class: "ui red button" %>
